@@ -1,0 +1,18 @@
+Matthew Hui - 3 UNHELPABLES
+SoftDev
+LJ00: Le Voyage de Learnination avec Mongo, Première Phase
+2020-10-21
+
+- NOSQL Document Database
+- Document: Stores dat as a set of field-value paris.
+{
+	<field>: <value>,
+	<field>: <value>
+}
+
+- collection sotres multiple documents
+- clusters: stores data on servers
+- Replica Set: A few machines store the same data so if you lose info on one, you will have backup copies
+
+PASSWORD: 
+m001-mongodb-basics

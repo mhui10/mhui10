@@ -1,0 +1,56 @@
+Matthew Hui - TEAM 9
+SoftDev
+LJ01: Le Voyage de Learnination avec Mongo, Deuxieme Phase
+2020-11-6
+
+Inserting New Documents:
+Via MongoDB UI:
+Go to a collection and press "Insert Document"
+- Can enter the value here
+- All documents have a unique "_id": "1a" value or field value but the data within these documnets can be identical
+
+ObjectId() - Default value & type for the _id field value
+
+Follow the model other documents are using to keep the data relatively consistent
+
+Via Mongo Shell:
+db.collection.findOne() : 
+- Will give you a details of a random documnet in the "pretty form"
+db.collection.insert({data})
+- Inserts a document into a collection, _id cannot be the same as another one otherwise it creates a duplicate error
+- If we don't specify the _id value, then it will automatically generate one
+
+Inserting multiple documents:
+- Can insert an array of values [ {"test":1}, {"test":2}]
+- If we do insert multiple values and specify the unique _id, mongoDB reads them in order and stops if it recieves and error. To avoid this, we insert the field {"ordered": false}
+ex:
+db.collection.insert([{"_id":1}, {"_id":1}, {"_id":3}], {"ordered":false})
+Doing this will insert _id 1 and _id 3
+
+Updating Documnets:
+Via UI:
+Go to the document you want to modify:
+- Press the edit (pencil) thing and press where you want to add the subdocument/element
+
+Via Mongo Shell:
+One: 
+- UpdateOne() - updates only the first value that matches a query
+- findOne()
+
+Many:
+- updateMany() - updates all values that match a query
+- find()
+
+db.zips.updateMany({query}, {updateToHappen})
+updateToHappen: {"$inc": Incrememnt, {"key":value}}
+- the $inc increments the field by a value
+We can also us the "$set" : value. This sets a value in a document to a new value
+$push {"key":value} - This adds a new element to the list
+
+Deleting Documents & Collections:
+Via MongoShell:
+Have deleteOne() and deleteMany() commands
+- deleteOne() is only a good way to delete only if we query based on _id
+
+- To delete a colletion, we use .drop()
+db.collection.drop()

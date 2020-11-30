@@ -1,0 +1,26 @@
+Matthew Hui - 3 UNHELPABLES
+SoftDev
+LJ00: Le Voyage de Learnination avec Mongo, Première Phase
+2020-10-23
+
+- JSON: Very user friendly but slow
+- BSON: Binary version and adds additonal datatypes
+JSON 	      | BSON
+mongoimport  | mongostore
+mongoexport  | mongodump : exports data in respective language
+
+ex:
+mongo dump --uri "<Atlas Cluster URL>"
+uri: unified resource identifier
+
+mongoexport --uri="Atlas Cluser URL --collections=sales = out sales.json
+Will export the data in the JSON type
+
+find():
+- show dbs -> ls
+- use database_name (uses a specific db)
+- show collections (shows all collections)
+db.zips.find({"key: "value"})
+- Will only show 20 files at a time
+  - Adding .count() after will return a number of files that satisfy
+  - Adding .pretty() will make it look nicer when it prints out a document

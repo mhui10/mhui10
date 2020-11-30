@@ -1,0 +1,37 @@
+Matthew Hui - TEAM 9
+SoftDev
+LJ02: Le Voyage de Learnination avec Mongo, Troisième Phase
+2020-11-19
+
+Aggregation Framework: Another way to query data in MongoDB -> "aggregate" -> pipeline -> order matters!
+- Use Aggregation to build complex filters
+ex: 
+MQL query version:
+db.listingsAndReviews.find({ "amenities": "Wifi" },
+                           { "price": 1, "address": 1, "_id": 0 }).pretty()
+Agregation Framework:
+db.listingsAndReviews.aggregate([
+                                  { "$match": { "amenities": "Wifi" } },
+                                  { "$project": { "price": 1,
+                                                  "address": 1,
+                                                  "_id": 0 }}]).pretty()
+Can form different types of operations (like calculate)
+- In arrays, the order matters of the key value pair & types that we input
+- $match is the first filter that filters out everything that does not have Wifi
+- $project is the second level of filters that get rids of everything without these two amenities
+
+- $group: An operator that takes the incoming stream of data, and siphons it into multiple distinct reservoirs
+	Can find how many different types of values are used in a key:
+	(ex: in "country", using the $group will show you all the countries that are listed)
+
+- Cursor Methods
+    - $sort: sort based on find -> sorts first
+    - $limit: get n results
+    - pretty() and count()
+- createIndex -> speeds up queries -> Single field index vs compound index
+- Data modeling - a way to organize fields in a document to support your application performance and querying capabilities:
+-  Data is stored in the way that it is used
+- Every function that is used to locate can update a field
+- upsert -> a hybrid of update and insert -> be careful -> set to false by default
+    - true -> conditional updates
+    - false -> insert a brand new document

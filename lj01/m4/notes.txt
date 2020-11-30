@@ -1,0 +1,66 @@
+Matthew Hui - TEAM 9
+SoftDev
+LJ01: Le Voyage de Learnination avec Mongo, Deuxieme Phase
+2020-11-12
+
+Query Operators:
+- Provide additional ways of finding things
+- Have $ in syntax
+
+Comparison: 
+$eq - equal to     | $neq - not equal to
+$gt - greater than | $lt - less than
+$gte - >=          | $lte - <= 
+
+All follow similar syntax of: 
+{ <field> : {<operator> : <value>} }
+
+ex: {"trip time" : {$lte : 70}} - searches for all trip times that have values <= 70
+
+We use .find in the mongo shell to find the specified query information
+
+Comparison Quiz:
+1. 8065
+2. 6
+3. db.routes.find({ "stops": { "$ne": 0 }}).pretty() & db.routes.find({ "stops": { "$gt": 0 }}).pretty()
+
+Logic Operators:
+$and - If all the specified query clauses are matched
+$or - If one of the specified query is matched                        
+$nor - Returns everything that fails to match both clauses
+$not - negates the query requirement and all that do not match it. 
+
+Syntax:
+$and
+$or - {<operator> : [{statement 1}, {statement 2}, ... ]}
+$nor
+
+$not - {$not: {statement}}
+
+Other:
+$and is the default logic operator 
+- We really only use and when we need more than one operator in the same query
+
+Expressive Query: 
+- $expr: can use agregation expressions and variables/conditional statements
+ex. {"$expr": {"$eq": ["$start","$end"]}} compares if the start & end values are equal
+Aggregation Syntax:
+{expression: {field, value}}
+
+Array Operators:
+$push - turns data into type array if it is not already
+Order does matter if we are looking at arrays
+{"array field" : {$all: [array stuff]}}
+- $all makes order not matter
+
+-"$size" : number - limits the size of the arrayfield to only 20 elements
+
+Query Subdocuments:
+- ex db.document.find({"name_of_collection.subdocument" : "subdocument_Value"})
+- Can chain these dots to go to different subdocuments
+- Use numbers to indicate the array section (0, 1, 2, 3)
+- ex: db.companies.find({"relationships.0.persons.last_name": "Zuckerburg"}, {"name" : 1})
+- OR: "relationships.0.title" : {"$regex": "CEO"} - regex searches for an exact string
+- OR: .find({"relationships": {"$elemMatch" : {"is_past" : true, "person.first_name" : "Mark"} } }, {"name" : 1})
+- Searches all array values and finds the ones that matches these elements
+

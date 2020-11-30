@@ -1,0 +1,26 @@
+Matthew Hui - TEAM 9
+SoftDev
+LJ02: Le Voyage de Learnination avec Mongo, Troisième Phase
+2020-11-25
+
+Data Explorer Features:
+- Indexes: Use to view what indexes a collection has and a performance advisor
+- Schemea Anit-Patterns - suggests queries
+- Aggregation tab -> preview the data after pipeline -> creates imports statements to use pipeline in a programming language
+
+Atlas Access: 
+- Atlas has organization -> to bill, group, and build project teams
+	- Each Cluster needs its own unique name!
+    - Realms is a service to sync mongodb to your application
+    - Charts allows you to visualize your data -> heatmaps, column, line, etc. 
+   		- Can use data from collections
+
+- Compass is a mongodb gui:
+	- Download it to access mongodb things: Looks like a desktop version of the website
+    - view as table
+    - Also has explain plan -> see how much time
+    - import query
+    - schema is to view meta data
+    - indexes -> view created indexes
+    - much easier to create queries
+    - validation -> to create rules on what is allow on your database
